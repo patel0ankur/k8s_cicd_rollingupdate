@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Deployment
 metadata:
-  name: nodejs_deployment
+  name: nodeapp
   labels:
     app: nodeapp
 spec:
@@ -33,7 +33,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name:  nodejs_svc
+  name:  nodeapp
 spec:
   selector:
     app:  nodeapp
