@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: nodeapp
-        image: ankurpatel/nodejs_app:latest
+        image: ankurpatel/nodejs_app:$BUILD_NUMBER
         imagePullPolicy: Always
         resources:
             limits:
