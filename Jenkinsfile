@@ -2,7 +2,6 @@ pipeline {
     agent any
     environment {
         DOCKER_IMAGE_NAME = "ankurpatel/nodejs_app" + ":$BUILD_NUMBER"
-        
         registryCredential = 'Docker_Hub_Login'
         
     }
@@ -21,8 +20,8 @@ pipeline {
             }
             steps {
                 script {
-                  sh "docker build -t ${DOCKER_IMAGE_NAME} -f app/Dockerfile app/" 
-                  //  app = docker.build(DOCKER_IMAGE_NAME)
+                  //sh "docker build -t ${DOCKER_IMAGE_NAME} -f app/Dockerfile app/" 
+                  app = docker.build(DOCKER_IMAGE_NAME)
                    }
             }
         }
@@ -33,8 +32,8 @@ pipeline {
                 steps {
                     script {
                         docker.withRegistry('https://registry.hub.docker.com', registryCredential ) {
-                        docker.push(DOCKER_IMAGE_NAME)
-                      
+                        //docker.push(DOCKER_IMAGE_NAME)
+                        app.push("latest")
                         }
                     }
                 }
